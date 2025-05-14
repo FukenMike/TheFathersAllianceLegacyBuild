@@ -33,7 +33,7 @@ section {
   padding: 4rem 2rem;
 }
 
-/* Individual backgrounds */
+/* Background images */
 section.hero { background-image: url('images/hero_home.jpg'); }
 section.who-we-are {
   background-image: url('images/who_we_are.jpg');
@@ -56,14 +56,29 @@ section.founder-story { background-image: url('founder-bg.jpg'); }
 }
 
 /* Navigation styles */
-.menu-button { display: none; }
-nav.menu-list {
+.menu-button {
+  display: none;
   position: fixed;
   top: 10px;
   right: 10px;
+  z-index: 1001;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+nav.menu-list {
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  background: rgba(0,0,0,0.8);
+  flex-direction: column;
+  display: none;
+  gap: 0.5rem;
+  padding: 1rem;
   z-index: 1000;
-  display: flex;
-  gap: 1rem;
 }
 nav.menu-list a {
   color: #fff;
@@ -75,6 +90,26 @@ nav.menu-list a {
 }
 nav.menu-list a:hover {
   background-color: #FF6347;
+}
+nav.menu-list.open {
+  display: flex;
+}
+
+/* Desktop nav override */
+@media (min-width: 769px) {
+  .menu-button {
+    display: none;
+  }
+  nav.menu-list {
+    display: flex;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0;
+  }
 }
 
 /* Vision side-by-side layout */
@@ -94,12 +129,8 @@ nav.menu-list a:hover {
   border-radius: 8px;
 }
 
-/* Responsive adjustments for mobile */
+/* Responsive adjustments for mobile (other elements) */
 @media (max-width: 768px) {
-  /* Recommend adding in each HTML <head>: */
-  /* <meta name="viewport" content="width=device-width, initial-scale=1.0"> */
-
-  /* Adjust section padding and height */
   section {
     padding: 2rem 1rem;
     min-height: auto;
@@ -116,27 +147,6 @@ nav.menu-list a:hover {
       0 0 6px #FFC107,
       0 0 12px #FFC107;
   }
-
-  /* Always show desktop-style nav on mobile for better accessibility */
-  .menu-button { display: none; }
-  nav.menu-list {
-    display: flex !important;
-    position: static;
-    top: auto;
-    right: auto;
-    background: none;
-    padding: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  nav.menu-list a {
-    padding: 0.4rem 0.8rem;
-    font-size: 1rem;
-    margin: 0.2rem;
-  }
-
-  /* Stack vision panels vertically */
   .vision-container {
     flex-direction: column;
   }
@@ -144,4 +154,3 @@ nav.menu-list a:hover {
     margin-bottom: 1rem;
   }
 }
-
