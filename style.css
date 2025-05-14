@@ -129,8 +129,13 @@ nav.menu-list.open {
   border-radius: 8px;
 }
 
-/* Responsive adjustments for mobile (other elements) */
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
+  /* Show hamburger button */
+  .menu-button {
+    display: block;
+  }
+
   section {
     padding: 2rem 1rem;
     min-height: auto;
