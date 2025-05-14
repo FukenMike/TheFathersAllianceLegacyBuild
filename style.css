@@ -7,13 +7,17 @@ body, html {
   scroll-behavior: smooth;
 }
 
+/* Glowing heading */
+.glow-text {
+  color: #fff;
+  text-shadow:
+    0 0 8px #FFC107,
+    0 0 16px #FFC107,
+    0 0 24px #FF9800;
+}
+
 /* Section base styles */
-section.hero,
-section.who-we-are,
-section.mission,
-section.vision,
-section.donate,
-section.founder-story {
+section {
   width: 100%;
   position: relative;
   background-size: cover;
@@ -28,7 +32,7 @@ section.founder-story {
   padding: 4rem 2rem;
 }
 
-/* Background images */
+/* Individual backgrounds */
 section.hero {
   background-image: url('images/hero_home.jpg');
 }
@@ -49,7 +53,7 @@ section.founder-story {
   background-image: url('founder-bg.jpg');
 }
 
-/* Overlay and text styles */
+/* Overlay and text container */
 .overlay-text,
 .mission-text {
   background: rgba(0, 0, 0, 0.4);
@@ -60,7 +64,7 @@ section.founder-story {
   line-height: 1.6;
 }
 
-/* Navigation styles */
+/* Navigation */
 .menu-button {
   display: none;
 }
@@ -70,7 +74,7 @@ nav.menu-list {
   right: 10px;
   z-index: 1000;
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 nav.menu-list a {
   color: #fff;
@@ -84,7 +88,7 @@ nav.menu-list a:hover {
   background-color: #FF6347;
 }
 
-/* Vision page side-by-side layout */
+/* Vision side-by-side */
 .vision-container {
   display: flex;
   justify-content: space-between;
@@ -92,19 +96,22 @@ nav.menu-list a:hover {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  flex-wrap: wrap;
+  gap: 2rem;
 }
-.vision-panel {
-  flex: 1 1 45%;
-  margin: 1rem;
-  background: rgba(255,255,255,0.1);
-  padding: 1rem;
+.vision-container .vision-column {
+  flex: 1;
+  background: rgba(0,0,0,0.4);
+  padding: 2rem;
   border-radius: 8px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  section.hero,
+  /* Keep hero full height */
+  section.hero {
+    min-height: 100vh;
+  }
+  /* Other sections auto height */
   section.who-we-are,
   section.mission,
   section.vision,
@@ -113,7 +120,7 @@ nav.menu-list a:hover {
     min-height: auto;
     padding: 2rem 1rem;
   }
-  /* Show hamburger */
+  /* Hamburger button */
   .menu-button {
     display: block;
     position: fixed;
@@ -127,7 +134,7 @@ nav.menu-list a:hover {
     border-radius: 5px;
     cursor: pointer;
   }
-  /* Hide desktop nav */
+  /* Mobile nav hidden by default */
   nav.menu-list {
     display: none;
     flex-direction: column;
@@ -138,21 +145,15 @@ nav.menu-list a:hover {
     padding: 1rem;
     border-radius: 5px;
   }
-  nav.menu-list a {
-    margin-bottom: 0.5rem;
+  nav.menu-list.open {
+    display: flex;
   }
-  /* Vision becomes vertical */
+  /* Vision vertical stacking */
   .vision-container {
     flex-direction: column;
-    align-items: center;
   }
-  .vision-panel {
-    flex: 1 1 100%;
-    margin: 0.5rem 0;
+  .vision-container .vision-column {
+    margin-bottom: 1rem;
   }
 }
 
-/* Toggle nav visibility */
-nav.menu-list.open {
-  display: flex;
-}
