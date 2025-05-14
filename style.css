@@ -10,7 +10,10 @@ body, html {
 /* Sections with responsive backgrounds */
 section.hero,
 section.who-we-are,
-section.mission {
+section.mission,
+section.vision,
+section.donate,
+section.founder-story {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -24,42 +27,29 @@ section.mission {
   padding: 4rem 2rem;
 }
 
+/* Individual section backgrounds */
 section.hero {
   background-image: url('images/hero_home.jpg');
   padding: 0;
 }
-
 section.who-we-are {
   background-image: url('images/who_we_are.jpg');
-  padding: 4rem 2rem;
 }
-
 section.mission {
   background-image: url('images/mission.jpg');
-  padding: 6rem 2rem;
+}
+section.vision {
+  background-image: url('images/vision.jpg');
+}
+section.donate {
+  background-image: url('images/donate-bg.jpg');
+}
+section.founder-story {
+  background-image: url('images/founder-bg.jpg');
 }
 
-/* Single overlay layer */
-.overlay-text {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 800px;
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-.overlay-text.fade-on-scroll {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-.overlay-text.fade-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* Overlay and text styles */
+.overlay-text,
 .mission-text {
   background: rgba(0, 0, 0, 0.4);
   padding: 2rem;
@@ -67,12 +57,18 @@ section.mission {
   max-width: 800px;
   font-size: 1.2rem;
   line-height: 1.6;
+}
+
+/* Fade-on-scroll */
+.overlay-text.fade-on-scroll,
+.mission-text {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
-
-.mission-text.visible {
+.overlay-text.fade-on-scroll.visible,
+.mission-text.visible,
+.scroll-fade.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -83,23 +79,28 @@ section.mission {
   gap: 2rem;
   flex-wrap: wrap;
 }
-
 .vision-column {
   flex: 1 1 45%;
   min-width: 300px;
 }
 
-@media (max-width: 768px) {
-  .vision-container {
-    flex-direction: column;
-  }
-
-  section.hero,
-  section.who-we-are,
-  section.mission {
-    background-attachment: scroll;
-    background-size: cover;
-  }
+/* Donation links layout */
+.donation-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+.donation-links .button {
+  background-color: #9b1c1c;
+  color: #f8f5f0;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
 }
 
 /* Text effects */
@@ -107,13 +108,11 @@ section.mission {
   opacity: 0;
   animation: fadeIn 2s forwards;
 }
-
 .fade-in.glow,
 .glow-text {
   color: #FFC145;
   text-shadow: 0 0 10px #FFC145;
 }
-
 .delayed {
   animation-delay: 2s;
 }
@@ -125,7 +124,6 @@ nav {
   right: 10px;
   z-index: 10;
 }
-
 nav a {
   color: #fff;
   background-color: #8B0000;
@@ -134,13 +132,31 @@ nav a {
   text-decoration: none;
   transition: background 0.3s ease;
 }
-
 nav a:hover {
   background-color: #FF6347;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vision-container {
+    flex-direction: column;
   }
+  section.hero,
+  section.who-we-are,
+  section.mission,
+  section.vision,
+  section.donate,
+  section.founder-story {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+  .donation-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Fade-in keyframes */
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
