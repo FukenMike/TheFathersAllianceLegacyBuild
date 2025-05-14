@@ -7,17 +7,18 @@ body, html {
   scroll-behavior: smooth;
 }
 
-/* Sections with responsive backgrounds */
+/* Section base styles */
 section.hero,
 section.who-we-are,
 section.mission,
 section.vision,
 section.donate,
 section.founder-story {
+  width: 100%;
+  position: relative;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: scroll;
+  background-position: center center;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -27,13 +28,13 @@ section.founder-story {
   padding: 4rem 2rem;
 }
 
-/* Individual section backgrounds */
+/* Background images */
 section.hero {
   background-image: url('images/hero_home.jpg');
-  padding: 0;
 }
 section.who-we-are {
   background-image: url('images/who_we_are.jpg');
+  background-position: top center;
 }
 section.mission {
   background-image: url('images/mission.jpg');
@@ -42,10 +43,10 @@ section.vision {
   background-image: url('images/vision.jpg');
 }
 section.donate {
-  background-image: url('images/donate-bg.jpg');
+  background-image: url('donate-bg.jpg');
 }
 section.founder-story {
-  background-image: url('images/founder-bg.jpg');
+  background-image: url('founder-bg.jpg');
 }
 
 /* Overlay and text styles */
@@ -59,30 +60,19 @@ section.founder-story {
   line-height: 1.6;
 }
 
-/* Fade-on-scroll */
-.overlay-text.fade-on-scroll,
-.mission-text {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-}
-.overlay-text.fade-on-scroll.visible,
-.mission-text.visible,
-.scroll-fade.visible {
-  opacity: 1;
-  transform: none;
-}
-
 /* Navigation styles */
-nav {
+.menu-button {
+  display: none;
+}
+nav.menu-list {
   position: fixed;
   top: 10px;
   right: 10px;
-  z-index: 10;
+  z-index: 1000;
   display: flex;
   gap: 0.5rem;
 }
-nav a {
+nav.menu-list a {
   color: #fff;
   background-color: #8B0000;
   padding: 0.5rem 1rem;
@@ -90,59 +80,30 @@ nav a {
   text-decoration: none;
   transition: background 0.3s ease;
 }
-nav a:hover {
+nav.menu-list a:hover {
   background-color: #FF6347;
+}
+
+/* Vision page side-by-side layout */
+.vision-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.vision-panel {
+  flex: 1 1 45%;
+  margin: 1rem;
+  background: rgba(255,255,255,0.1);
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .vision-container {
-    flex-direction: column;
-  }
-  section.hero,
-  section.who-we-are,
-  section.mission,
-  section.vision,
-  section.donate,
-  section.founder-story {
-    background-attachment: scroll;
-    background-size: cover;
-    min-height: auto; /* Allow sections to size to content on mobile */
-  }
-  .donation-links {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-/* Fade-in keyframes */
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-/* Override section height for mobile and adjust background position */
-section.hero,
-section.who-we-are,
-section.mission,
-section.vision,
-section.donate,
-section.founder-story {
-  min-height: auto;
-}
-
-/* Ensure Who We Are background shows top of image */
-section.who-we-are {
-  background-position: top center !important;
-}
-
-/* Hide hamburger menu on desktop */
-.menu-button {
-  display: none;
-}
-
-/* Mobile navigation toggle styling */
-@media (max-width: 768px) {
-  /* Collapse section heights on mobile */
   section.hero,
   section.who-we-are,
   section.mission,
@@ -150,15 +111,15 @@ section.who-we-are {
   section.donate,
   section.founder-story {
     min-height: auto;
+    padding: 2rem 1rem;
   }
-
-  /* Show hamburger button */
+  /* Show hamburger */
   .menu-button {
     display: block;
     position: fixed;
     top: 10px;
     left: 10px;
-    z-index: 1050;
+    z-index: 1001;
     background: rgba(0,0,0,0.7);
     color: #fff;
     border: none;
@@ -166,8 +127,7 @@ section.who-we-are {
     border-radius: 5px;
     cursor: pointer;
   }
-
-  /* Hide nav menu initially */
+  /* Hide desktop nav */
   nav.menu-list {
     display: none;
     flex-direction: column;
@@ -177,13 +137,22 @@ section.who-we-are {
     background: rgba(0,0,0,0.8);
     padding: 1rem;
     border-radius: 5px;
-    z-index: 1040;
   }
-
-  /* Stack nav links */
   nav.menu-list a {
-    display: block;
     margin-bottom: 0.5rem;
+  }
+  /* Vision becomes vertical */
+  .vision-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .vision-panel {
+    flex: 1 1 100%;
+    margin: 0.5rem 0;
   }
 }
 
+/* Toggle nav visibility */
+nav.menu-list.open {
+  display: flex;
+}
