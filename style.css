@@ -70,59 +70,17 @@ section.founder-story {
 .mission-text.visible,
 .scroll-fade.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-/* Vision split layout */
-.vision-container {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-.vision-column {
-  flex: 1 1 45%;
-  min-width: 300px;
-}
-
-/* Donation links layout */
-.donation-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-  align-items: start;
-  margin-bottom: 2rem;
-}
-.donation-links .button {
-  background-color: #9b1c1c;
-  color: #f8f5f0;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-}
-
-/* Text effects */
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 2s forwards;
-}
-.fade-in.glow,
-.glow-text {
-  color: #FFC145;
-  text-shadow: 0 0 10px #FFC145;
-}
-.delayed {
-  animation-delay: 2s;
-}
-
-/* Navigation */
+/* Navigation styles */
 nav {
   position: fixed;
   top: 10px;
   right: 10px;
   z-index: 10;
+  display: flex;
+  gap: 0.5rem;
 }
 nav a {
   color: #fff;
@@ -149,6 +107,7 @@ nav a:hover {
   section.founder-story {
     background-attachment: scroll;
     background-size: cover;
+    min-height: auto; /* Allow sections to size to content on mobile */
   }
   .donation-links {
     flex-direction: column;
@@ -160,3 +119,71 @@ nav a:hover {
 @keyframes fadeIn {
   to { opacity: 1; }
 }
+
+/* Override section height for mobile and adjust background position */
+section.hero,
+section.who-we-are,
+section.mission,
+section.vision,
+section.donate,
+section.founder-story {
+  min-height: auto;
+}
+
+/* Ensure Who We Are background shows top of image */
+section.who-we-are {
+  background-position: top center !important;
+}
+
+/* Hide hamburger menu on desktop */
+.menu-button {
+  display: none;
+}
+
+/* Mobile navigation toggle styling */
+@media (max-width: 768px) {
+  /* Collapse section heights on mobile */
+  section.hero,
+  section.who-we-are,
+  section.mission,
+  section.vision,
+  section.donate,
+  section.founder-story {
+    min-height: auto;
+  }
+
+  /* Show hamburger button */
+  .menu-button {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1050;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Hide nav menu initially */
+  nav.menu-list {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    background: rgba(0,0,0,0.8);
+    padding: 1rem;
+    border-radius: 5px;
+    z-index: 1040;
+  }
+
+  /* Stack nav links */
+  nav.menu-list a {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+}
+
