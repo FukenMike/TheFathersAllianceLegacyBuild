@@ -1,4 +1,3 @@
-
 body, html {
   margin: 0;
   padding: 0;
@@ -8,52 +7,46 @@ body, html {
   scroll-behavior: smooth;
 }
 
-section.hero {
-  background: url('images/hero_home.jpg') no-repeat center center fixed;
-  background-size: contain;
+/* Sections with responsive backgrounds */
+section.hero,
+section.who-we-are,
+section.mission {
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: scroll;
   min-height: 100vh;
-  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 4rem 2rem;
+}
+
+section.hero {
+  background-image: url('images/hero_home.jpg');
+  padding: 0;
 }
 
 section.who-we-are {
-  background: url('images/who_we_are.jpg') no-repeat center center fixed;
-  background-size: contain;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: url('images/who_we_are.jpg');
   padding: 4rem 2rem;
 }
 
 section.mission {
-  background: url('images/mission.jpg') no-repeat center center fixed;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #000;
-  min-height: 100vh;
+  background-image: url('images/mission.jpg');
   padding: 6rem 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.overlay {
-  background: rgba(0, 0, 0, 0.6);
+/* Single overlay layer */
+.overlay-text {
+  background: rgba(0, 0, 0, 0.4);
   padding: 2rem;
-  border-radius: 12px;
-}
-
-.overlay.lowered {
-  margin-top: 10vh;
+  border-radius: 10px;
+  max-width: 800px;
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
 .overlay-text.fade-on-scroll {
@@ -67,17 +60,8 @@ section.mission {
   transform: translateY(0);
 }
 
-.overlay-text {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 800px;
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
 .mission-text {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.4);
   padding: 2rem;
   border-radius: 10px;
   max-width: 800px;
@@ -93,12 +77,39 @@ section.mission {
   transform: translateY(0);
 }
 
+/* Vision split layout */
+.vision-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.vision-column {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .vision-container {
+    flex-direction: column;
+  }
+
+  section.hero,
+  section.who-we-are,
+  section.mission {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+}
+
+/* Text effects */
 .fade-in {
   opacity: 0;
   animation: fadeIn 2s forwards;
 }
 
-.fade-in.glow {
+.fade-in.glow,
+.glow-text {
   color: #FFC145;
   text-shadow: 0 0 10px #FFC145;
 }
@@ -107,11 +118,7 @@ section.mission {
   animation-delay: 2s;
 }
 
-.glow-text {
-  color: #FFC145;
-  text-shadow: 0 0 10px #FFC145;
-}
-
+/* Navigation */
 nav {
   position: fixed;
   top: 10px;
