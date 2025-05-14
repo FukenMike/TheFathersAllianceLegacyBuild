@@ -1,3 +1,4 @@
+/* Global resets */
 body, html {
   margin: 0;
   padding: 0;
@@ -33,25 +34,15 @@ section {
 }
 
 /* Individual backgrounds */
-section.hero {
-  background-image: url('images/hero_home.jpg');
-}
+section.hero { background-image: url('images/hero_home.jpg'); }
 section.who-we-are {
   background-image: url('images/who_we_are.jpg');
   background-position: top center;
 }
-section.mission {
-  background-image: url('images/mission.jpg');
-}
-section.vision {
-  background-image: url('images/vision.jpg');
-}
-section.donate {
-  background-image: url('donate-bg.jpg');
-}
-section.founder-story {
-  background-image: url('founder-bg.jpg');
-}
+section.mission { background-image: url('images/mission.jpg'); }
+section.vision { background-image: url('images/vision.jpg'); }
+section.donate { background-image: url('donate-bg.jpg'); }
+section.founder-story { background-image: url('founder-bg.jpg'); }
 
 /* Overlay and text container */
 .overlay-text,
@@ -64,10 +55,8 @@ section.founder-story {
   line-height: 1.6;
 }
 
-/* Navigation */
-.menu-button {
-  display: none;
-}
+/* Navigation styles */
+.menu-button { display: none; }
 nav.menu-list {
   position: fixed;
   top: 10px;
@@ -88,7 +77,7 @@ nav.menu-list a:hover {
   background-color: #FF6347;
 }
 
-/* Vision side-by-side */
+/* Vision side-by-side layout */
 .vision-container {
   display: flex;
   justify-content: space-between;
@@ -105,50 +94,49 @@ nav.menu-list a:hover {
   border-radius: 8px;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for mobile */
 @media (max-width: 768px) {
-  /* Keep hero full height */
-  section.hero {
-    min-height: 100vh;
-  }
-  /* Other sections auto height */
-  section.who-we-are,
-  section.mission,
-  section.vision,
-  section.donate,
-  section.founder-story {
-    min-height: auto;
+  /* Recommend adding in each HTML <head>: */
+  /* <meta name="viewport" content="width=device-width, initial-scale=1.0"> */
+
+  /* Adjust section padding and height */
+  section {
     padding: 2rem 1rem;
+    min-height: auto;
   }
-  /* Hamburger button */
-  .menu-button {
-    display: block;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1001;
-    background: rgba(0,0,0,0.7);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
+  .overlay-text,
+  .mission-text {
+    padding: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.4;
   }
-  /* Mobile nav hidden by default */
+  .glow-text {
+    font-size: 2rem;
+    text-shadow:
+      0 0 6px #FFC107,
+      0 0 12px #FFC107;
+  }
+
+  /* Always show desktop-style nav on mobile for better accessibility */
+  .menu-button { display: none; }
   nav.menu-list {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    top: 50px;
-    right: 10px;
-    background: rgba(0,0,0,0.8);
+    display: flex !important;
+    position: static;
+    top: auto;
+    right: auto;
+    background: none;
     padding: 1rem;
-    border-radius: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
-  nav.menu-list.open {
-    display: flex;
+  nav.menu-list a {
+    padding: 0.4rem 0.8rem;
+    font-size: 1rem;
+    margin: 0.2rem;
   }
-  /* Vision vertical stacking */
+
+  /* Stack vision panels vertically */
   .vision-container {
     flex-direction: column;
   }
