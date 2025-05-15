@@ -1,162 +1,109 @@
-/* Global resets */
-body, html {
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+body {
   margin: 0;
   padding: 0;
   font-family: 'Arial', sans-serif;
   color: #fff;
   background-color: #000;
-  scroll-behavior: smooth;
+  line-height: 1.5;
 }
 
-/* Glowing heading */
-.glow-text {
-  color: #fff;
-  text-shadow:
-    0 0 8px #FFC107,
-    0 0 16px #FFC107,
-    0 0 24px #FF9800;
-}
-
-/* Section base styles */
+/* Global Section Styles */
 section {
-  width: 100%;
   position: relative;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
   min-height: 100vh;
+  padding: 4rem 2rem;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: 4rem 2rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-/* Background images */
-section.hero { background-image: url('images/hero_home.jpg'); }
-section.who-we-are {
-  background-image: url('images/who_we_are.jpg');
-  background-position: top center;
+/* Remove any overlay styling */
+.overlay {
+  display: none !important;
 }
+
+/* Individual Backgrounds */
+section.hero    { background-image: url('images/hero_home.jpg'); padding-top: 0; }
+section.who-we-are { background-image: url('images/who_we_are.jpg'); }
 section.mission { background-image: url('images/mission.jpg'); }
-section.vision { background-image: url('images/vision.jpg'); }
-section.donate { background-image: url('donate-bg.jpg'); }
-section.founder-story { background-image: url('founder-bg.jpg'); }
+section.vision  { background-image: url('images/vision.jpg'); }
+section.donate  { background-image: url('images/donate-bg.jpg'); }
+section.founder-story { background-image: url('images/founder-bg.jpg'); }
 
-/* Overlay and text container */
-.overlay-text,
-.mission-text {
-  background: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 800px;
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-/* Navigation styles */
-.menu-button {
-  display: none;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1001;
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-nav.menu-list {
-  position: fixed;
-  top: 50px;
-  right: 10px;
-  background: rgba(0,0,0,0.8);
-  flex-direction: column;
-  display: none;
-  gap: 0.5rem;
-  padding: 1rem;
-  z-index: 1000;
-}
-nav.menu-list a {
-  color: #fff;
-  background-color: #8B0000;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-nav.menu-list a:hover {
-  background-color: #FF6347;
-}
-nav.menu-list.open {
-  display: flex;
-}
-
-/* Desktop nav override */
-@media (min-width: 769px) {
-  .menu-button {
-    display: none;
-  }
-  nav.menu-list {
-    display: flex;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    background: none;
-    flex-direction: row;
-    gap: 1rem;
-    padding: 0;
-  }
-}
-
-/* Vision side-by-side layout */
-.vision-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+/* Utility Classes */
+.container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 2rem;
 }
-.vision-container .vision-column {
-  flex: 1;
-  background: rgba(0,0,0,0.4);
+
+/* Vision Split-Screen */
+.vision .vision-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.vision-item {
+  flex: 1 1 50%;
+  min-width: 300px;
   padding: 2rem;
-  border-radius: 8px;
 }
 
-/* Responsive adjustments for mobile */
-@media (max-width: 768px) {
-  /* Show hamburger button */
-  .menu-button {
-    display: block;
-  }
-
-  section {
-    padding: 2rem 1rem;
-    min-height: auto;
-  }
-  .overlay-text,
-  .mission-text {
-    padding: 1.5rem;
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-  .glow-text {
-    font-size: 2rem;
-    text-shadow:
-      0 0 6px #FFC107,
-      0 0 12px #FFC107;
-  }
-  .vision-container {
-    flex-direction: column;
-  }
-  .vision-container .vision-column {
-    margin-bottom: 1rem;
-  }
+/* Responsive Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: .5em 0;
+  line-height: 1.2;
+}
+p {
+  max-width: 800px;
+  margin: 1em auto;
 }
 
+/* Buttons (amber-glow) */
+.button {
+  display: inline-block;
+  padding: .75rem 1.5rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  background: #ffc107;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255,193,7, .5);
+  transition: transform .2s;
+}
+.button:hover {
+  transform: scale(1.05);
+}
+
+/* Utility Flex for other two-column layouts */
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+}
+.flex-col {
+  flex: 1 1 300px;
+  min-width: 280px;
+}
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
