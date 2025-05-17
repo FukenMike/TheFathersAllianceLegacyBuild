@@ -150,11 +150,13 @@ nav.menu-list a:hover {
 
 /* === TEXT OVERLAY STYLING === */
 .overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem 1rem;
   border-radius: 1rem;
   color: #fff;
-  max-width: 90%;
-  margin: auto;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 /* === END OVERLAY === */
