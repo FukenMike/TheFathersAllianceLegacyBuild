@@ -115,60 +115,34 @@ img {
 
 }
 
-/* === CUSTOM NAVIGATION WITH TOGGLE === */
-#menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #fff;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  z-index: 1001;
-  cursor: pointer;
-}
-
+/* === SIMPLIFIED MOBILE-FIRST NAVIGATION === */
 nav.menu-list {
   position: fixed;
   top: 1rem;
   right: 1rem;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
   z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 1rem;
+  border-radius: 10px;
   font-family: 'Arial Black', sans-serif;
 }
 
 nav.menu-list a {
   color: #fff;
-  background-color: #8B0000;
+  background-color: #8B0000; /* blood red */
   padding: 0.5rem 1rem;
   border-radius: 10px;
   text-decoration: none;
-  box-shadow: 0 0 8px rgba(255, 191, 0, 0.8);
+  box-shadow: 0 0 8px rgba(255, 191, 0, 0.8); /* amber glow */
   transition: background 0.3s ease;
   font-weight: bold;
+  text-align: center;
 }
 
 nav.menu-list a:hover {
   background-color: #a30000;
 }
-
-@media (max-width: 768px) {
-  #menu-toggle {
-    display: block;
-  }
-
-  nav.menu-list {
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.85);
-    padding: 1rem;
-    border-radius: 10px;
-    display: none;
-  }
-
-  nav.menu-list.visible {
-    display: flex;
-  }
-}
-/* === END CUSTOM NAVIGATION === */
+/* === END SIMPLIFIED NAV === */
