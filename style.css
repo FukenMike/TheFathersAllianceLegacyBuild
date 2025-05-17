@@ -138,3 +138,30 @@ nav.menu-list a {
     text-align: center;
   }
 }
+
+
+
+/* Responsive Navigation Fix */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav li {
+  margin: 0.5rem 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    margin: 0.75rem 0;
+  }
+}
