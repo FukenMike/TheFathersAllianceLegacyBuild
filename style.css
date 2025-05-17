@@ -48,7 +48,6 @@ section.founder-story { background-image: url('images/founder-bg.jpg'); }
 /* Utility Classes */
 .container {
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -60,7 +59,6 @@ section.founder-story { background-image: url('images/founder-bg.jpg'); }
 }
 .vision-item {
   flex: 1 1 50%;
-  min-width: 300px;
   padding: 2rem;
 }
 
@@ -70,7 +68,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 p {
-  max-width: 800px;
   margin: 1em auto;
 }
 
@@ -99,7 +96,6 @@ p {
 }
 .flex-col {
   flex: 1 1 300px;
-  min-width: 280px;
 }
 
 /* Make images responsive */
@@ -109,32 +105,44 @@ img {
 }
 
 /* Navigation Styles */
+}
+
+
+
+/* Responsive Navigation Fix */
+
+
+
+}
+
+/* === SIMPLIFIED MOBILE-FIRST NAVIGATION === */
 nav.menu-list {
   position: fixed;
   top: 1rem;
   right: 1rem;
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
   z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 1rem;
+  border-radius: 10px;
+  font-family: 'Arial Black', sans-serif;
 }
+
 nav.menu-list a {
   color: #fff;
-  text-decoration: none;
+  background-color: #8B0000; /* blood red */
   padding: 0.5rem 1rem;
-  background: rgba(0,0,0,0.5);
-  border-radius: 0.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 8px rgba(255, 191, 0, 0.8); /* amber glow */
+  transition: background 0.3s ease;
   font-weight: bold;
+  text-align: center;
 }
-@media (max-width: 768px) {
-  nav.menu-list {
-    flex-direction: column;
-    background: rgba(0,0,0,0.7);
-    padding: 1rem;
-    width: 100%;
-    right: 0;
-  }
-  nav.menu-list a {
-    padding: 1rem;
-    text-align: center;
-  }
+
+nav.menu-list a:hover {
+  background-color: #a30000;
 }
+/* === END SIMPLIFIED NAV === */
