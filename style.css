@@ -107,3 +107,34 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* Navigation Styles */
+nav.menu-list {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 1rem;
+  z-index: 1000;
+}
+nav.menu-list a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  background: rgba(0,0,0,0.5);
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  nav.menu-list {
+    flex-direction: column;
+    background: rgba(0,0,0,0.7);
+    padding: 1rem;
+    width: 100%;
+    right: 0;
+  }
+  nav.menu-list a {
+    padding: 1rem;
+    text-align: center;
+  }
+}
