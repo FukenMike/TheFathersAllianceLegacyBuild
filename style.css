@@ -146,17 +146,3 @@ nav.menu-list a:hover {
   background-color: #a30000;
 }
 /* === END SIMPLIFIED NAV === */
-
-
-/* === TEXT OVERLAY STYLING === */
-.overlay {
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 2rem 1rem;
-  border-radius: 1rem;
-  color: #fff;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-/* === END OVERLAY === */
