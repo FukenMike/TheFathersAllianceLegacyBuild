@@ -1,9 +1,0 @@
-{
-  "name": "fathers-alliance-legacy-static",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Static HTML/CSS build of The Father's Alliance legacy site",
-  "scripts": {
-    "build": "echo 'No build step necessary for static site'"
-  }
-}
